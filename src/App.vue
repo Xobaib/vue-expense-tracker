@@ -66,6 +66,8 @@ const handleTransactionSubmitted = (transactionData) => {
     amount: transactionData.amount,
   });
 
+  saveTaransactionsToLocalStorage();
+
   toast.success("Transaction added");
 };
 
@@ -80,6 +82,13 @@ const handleDelete = (id) => {
     return transaction.id !== id;
   });
 
+  saveTaransactionsToLocalStorage();
+
   toast.warning("Transaction deleted!");
+};
+
+// save to localstorage
+const saveTaransactionsToLocalStorage = () => {
+  localStorage.setItem("transactions", JSON.stringify(transactions.value));
 };
 </script>
